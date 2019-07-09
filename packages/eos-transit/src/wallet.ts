@@ -231,7 +231,7 @@ export function initWallet(walletProvider: WalletProvider, ctx: WalletAccessCont
 
 	// Authentication
 
-	function login(accountName?: string, authorization?: string): Promise<AccountInfo> {
+	function login(accountName?: string, authorization?: string, index: number = -1, key: string | undefined = undefined): Promise<AccountInfo> {
 		_stateContainer.updateState((state) => ({
 			...state,
 			accountInfo: void 0,
@@ -241,9 +241,6 @@ export function initWallet(walletProvider: WalletProvider, ctx: WalletAccessCont
 			authenticationError: false,
 			authenticationErrorMessage: void 0
 		}));
-
-		let index = -1;
-		let key = undefined;
 
 		//If we've done discovery then we should be able to find the account trying to login in the discoverData
 		if (discoverData.keyToAccountMap.length > 0) {

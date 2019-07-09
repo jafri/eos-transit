@@ -1,5 +1,5 @@
 import { Api, ApiInterfaces, RpcInterfaces, JsonRpc } from 'eosjs';
-import { WalletProvider, NetworkConfig, WalletAuth, DiscoveryOptions } from 'eos-transit';
+import { WalletProvider, NetworkConfig, WalletAuth, DiscoveryOptions } from '@jafri/eos-transit';
 import * as EosLedger from './EosLedger';
 import TransportU2F from '@ledgerhq/hw-transport-u2f';
 import TransportWebAuthn from '@ledgerhq/hw-transport-webauthn';
@@ -122,6 +122,15 @@ export function ledgerWalletProvider(
 
 		function discover(discoveryOptions: DiscoveryOptions) {
 			return new Promise((resolve, reject) => {
+				if (discoveryOptions.presetKeyMap) {
+					keyMap = keyMap.concat(...discoveryOptions.presetKeyMap);
+					let discoveryInfo = {
+						keys: keyMap,
+						note: 'Preset List'
+					};
+					resolve(discoveryInfo);
+				}
+
 				var _pathIndexList = discoveryOptions.pathIndexList || [ 0, 1, 2, 3 ];
 				var missingIndexs: number[] = [];
 
@@ -178,6 +187,10 @@ export function ledgerWalletProvider(
 
 		function logout(accountName?: string): Promise<boolean> {
 			return Promise.resolve(true);
+		}
+
+		function setKeyMap(newKeyMap: matchedIndexItem[]) {
+			keyMap = newKeyMap
 		}
 
 		function signArbitrary(data: string, userMessage: string): Promise<string> {

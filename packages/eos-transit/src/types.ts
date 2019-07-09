@@ -119,6 +119,10 @@ export type KeyModifierCallback = ( discoveryData: DiscoveryData ) => DiscoveryD
 export interface DiscoveryOptions {
 	pathIndexList: number[];
 	keyModifierFunc?: KeyModifierCallback;
+	presetKeyMap?: {
+        index: number;
+        key: string;
+    }[] 
 }
 
 export interface Wallet {
