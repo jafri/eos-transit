@@ -1,6 +1,6 @@
 {
-	"name": "eos-transit-ledger-provider",
-	"version": "3.3.3",
+	"name": "@jafri/eos-transit-ledger-provider",
+	"version": "3.3.3004",
 	"description": "ledger wallet provider for eos-transit",
 	"license": "UNLICENSED",
 	"main": "lib/index.js",
@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@babel/core": "^7.2.2",
 		"@babel/runtime": "^7.3.1",
+		"@jafri/eos-transit": "^3.1.2003",
 		"@ledgerhq/hw-transport": "^4.60.2",
 		"@ledgerhq/hw-transport-u2f": "^4.60.2",
 		"@ledgerhq/hw-transport-web-ble": "^4.60.3",
@@ -34,7 +35,6 @@
 		"babel-polyfill": "^6.26.0",
 		"babel-runtime": "^6.26.0",
 		"cross-env": "^5.2.0",
-		"eos-transit": "^3.1.2",
 		"fcbuffer": "^2.2.2",
 		"lerna": "^3.9.1",
 		"shx": "^0.3.2",
